@@ -21,6 +21,7 @@ class Bord {
             ':kolom' => $kolom
         ));
         $status = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $status;
     }
 
     public function gooiMunt($kolom, $status) {
@@ -47,13 +48,10 @@ class Bord {
     }
 
     public function reset() {
-        $sql = "update vieropeenrij_spelbord set status = :status";
+        $sql = "update vieropeenrij_spelbord set status = 0";
         $dbh = new PDO($this->dbCon, $this->dbgebr, $this->dbwacht);
-        $stmt = $dbh->prepare($sql);
-        $status = 0;
-        $stmt->execute(array(
-            ':status' => $status
-        ));
+        $stmt = $dbh->prepare($sql);      
+        $stmt->execute();
     }
 
 }
