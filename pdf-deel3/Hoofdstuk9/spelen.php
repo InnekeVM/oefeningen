@@ -1,8 +1,11 @@
 <?php
-require_once './spel.php';
+
+session_start();
+require_once ('./spel.php');
 
 
 $bord = new Bord();
+
 if (isset($_GET["action"])) {
     if ($_GET["action"] = "rood") {
         $_SESSION["kleur"] = 1;
@@ -33,11 +36,11 @@ if (isset($_GET["action"])) {
                     for ($kolom = 1; $kolom < 8; $kolom++) {
                         ?>
                         <td><a href="spelen.php?action=gooi&kolom=<?php echo($kolom); ?>"><?php
-                                $status = $bord->getStatus($rij, $kolom);
-                                if ($status == 0) {
+                                
+                                if ($bord->getStatus($rij, $kolom) == 0) {
                                     ?>
                                     <img src="../../../images/emptyslot.png">
-                                <?php } elseif ($status == 1) {
+                                <?php } elseif ($bord->getStatus($rij, $kolom) == 1) {
                                     ?>
                                     <img src="../../../images/redslot.png">
                                 <?php } else {

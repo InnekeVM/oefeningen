@@ -20,18 +20,18 @@ class Bord {
             ':rij' => $rij,
             ':kolom' => $kolom
         ));
-        $status = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $status;
+       $resultset = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultset["status"];
     }
 
     public function gooiMunt($kolom, $status) {
         //zoek vrije rij
         $gevondenRij = -1;
-        $i = 1;
-        while ($gevondenRij = -1 && $i<7){
+        $i = 7;
+        while ($gevondenRij = -1 && $i>07){
             if($this->getStatus($i, $kolom)==0){
                 $gevondenRij = $i;
-            }else {$i++;}
+            }else {$i--;}
         }
         
         if(!$gevondenRij== -1){
