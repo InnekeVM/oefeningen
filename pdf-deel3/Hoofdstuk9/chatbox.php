@@ -37,7 +37,7 @@ class Chatbox {
             ':nickname' => $nickname,
             ':boodschap' => $bericht,
             ':datum' => $datum
-                ));
+        ));
         $dbh = null;
     }
 

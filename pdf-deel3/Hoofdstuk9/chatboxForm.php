@@ -7,7 +7,6 @@ $chatbox = new Chatbox();
 
 
 
-
 if (!isset($_SESSION['chatter'])) {
     $getal = rand(111, 999);
     $_SESSION['chatter'] = "p" . $getal;
@@ -15,8 +14,7 @@ if (!isset($_SESSION['chatter'])) {
 
 
 if (isset($_POST["action"]) && $_POST["action"] == "new") {
-  $chatbox->nieuwBericht($_SESSION['chatter'], $_POST["bericht"]);
-  
+    $chatbox->nieuwBericht($_SESSION['chatter'], $_POST["bericht"]);
 }
 ?>
 
@@ -47,7 +45,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "new") {
                 ?>
             </tbody>
         </table>
-<?php echo $_SESSION['chatter'];?>
+
         <form action="chatboxForm.php" method="post">
             <p>Bericht:</p>
             <textarea name = "bericht" cols="50" rows="4"></textarea>
