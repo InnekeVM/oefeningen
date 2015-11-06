@@ -7,19 +7,19 @@ require_once ('./spel.php');
 $bord = new Bord();
 
 if (isset($_GET["action"])) {
-    if ($_GET["action"] = "rood") {
+    if ($_GET["action"] == "rood") {
         $_SESSION["kleur"] = 1;
-    } elseif ($_GET["action"] = "geel") {
+    } elseif ($_GET["action"] == "geel") {
         $_SESSION["kleur"] = 2;
-    } elseif ($_GET["action"] = "gooi") {
+    } elseif ($_GET["action"] == "gooi") {
         $bord->gooiMunt($_GET["kolom"], $_SESSION["kleur"]);
-    } elseif ($_GET["action"] = "reset") {
+    } elseif ($_GET["action"] == "reset") {
         $bord->reset();
     }
 }
 ?>
 
-<!Doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">

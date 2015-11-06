@@ -20,37 +20,41 @@ class Bord {
             ':rij' => $rij,
             ':kolom' => $kolom
         ));
-       $resultset = $stmt->fetch(PDO::FETCH_ASSOC);
+        $resultset = $stmt->fetch(PDO::FETCH_ASSOC);
         return $resultset["status"];
     }
 
     public function gooiMunt($kolom, $status) {
         //zoek vrije rij
         $gevondenRij = -1;
-        $i = 7;
-        while ($gevondenRij = -1 && $i>07){
-            if($this->getStatus($i, $kolom)==0){
+        $i = 6;
+        while ($gevondenRij == -1 && $i > 0) {
+            if ($this->getStatus($i, $kolom) == 0) {
                 $gevondenRij = $i;
-            }else {$i--;}
+            } else {
+                $i--;
+            }
         }
-        
-        if(!$gevondenRij== -1){
-        
-        $sql = "update vieropeenrij_spelbord set status = :status where rijnummer = :rij and kolomnummer = :kolom";
-        $dbh = new PDO($this->dbCon, $this->dbgebr, $this->dbwacht);
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute(array(
-            ':status' => $status,
-            ':rij' => $gevondenRij,
-            ':kolom' => $kolom
-        ));
+
+        if ($gevondenRij != -1) {
+
+            $sql = "update vieropeenrij_spelbord set status = :status where rijnummer = :rij and kolomnummer = :kolom";
+            $dbh = new PDO($this->dbCon, $this->dbgebr, $this->dbwacht);
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute(array(
+                ':status' => $status,
+                ':rij' => $gevondenRij,
+                ':kolom' => $kolom
+            ));
+            
+        }
     }
-    }
+
 
     public function reset() {
         $sql = "update vieropeenrij_spelbord set status = 0";
         $dbh = new PDO($this->dbCon, $this->dbgebr, $this->dbwacht);
-        $stmt = $dbh->prepare($sql);      
+        $stmt = $dbh->prepare($sql);
         $stmt->execute();
     }
 
