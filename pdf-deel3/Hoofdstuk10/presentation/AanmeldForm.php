@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Geheime informatie</h1>
-        <form method="post" action="../business/UserService.php?action=login">
+        <form method="post" action="../aanmelden.php?action=login">
             <input type="text" name="login" placeholder="login">
             <input type="text" name="password" placeholder="password">
             <input type="submit" value="verzenden">

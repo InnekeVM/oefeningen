@@ -12,9 +12,10 @@ class Genre {
     }
 
     public static function create($id, $genreNaam) {
-        if (!isset(self::$idMap["$id"])) {
-            self::$idMap["$id"] = new Genre($id, $genreNaam);
+        if (!isset(self::$idMap[$id])) {
+            self::$idMap[$id] = new Genre($id, $genreNaam);
         }
+        return self::$idMap[$id];
     }
     function getId() {
         return $this->id;

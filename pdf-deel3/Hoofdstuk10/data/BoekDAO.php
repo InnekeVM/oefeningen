@@ -8,7 +8,7 @@ class BoekDAO {
 
     public function getALL() {
         $sql = "select mvc_boeken.id as boek_id, titel,  
-			genre_id, genre from mvc_boeken,  
+			genre_id, genrenaam from mvc_boeken,  
 			mvc_genres where genre_id = mvc_genres.id";
 
         $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
@@ -17,7 +17,7 @@ class BoekDAO {
         $lijst = array();
 
         foreach ($resultSet as $rij) {
-            $genre = Genre::create($rij["genre_id"], $rij["genre"]);
+            $genre = Genre::create($rij["genre_id"], $rij["genrenaam"]);
             $boek = Boek::create($rij["boek_id"], $rij["titel"], $genre);
             array_push($lijst, $boek);
         }
@@ -26,13 +26,13 @@ class BoekDAO {
     }
 
     public function getById($id) {
-        $sql = "select mvc_boeken.id as boek_id, titel, genre_id, genre from mvc_boeken, mvc_genres where genre_id= mvc_genres.id and mvc_boeken.id = :id";
+        $sql = "select mvc_boeken.id as boek_id, titel, genre_id, genrenaam from mvc_boeken, mvc_genres where genre_id= mvc_genres.id and mvc_boeken.id = :id";
 
         $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_USERNAME);
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':id' => $id));
         $rij = $stmt->fetch(PDO::FETCH_ASSOC);
-        $genre = Genre::create($rij["genre_id"], $rij["genre"]);
+        $genre = Genre::create($rij["genre_id"], $rij["genrenaam"]);
         $boek = Boek::create($rij["boek_id"], $rij["titel"], $genre);
         $dbh = null;
         return $boek;

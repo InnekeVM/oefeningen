@@ -14,10 +14,10 @@ class Boek {
     }
 
     public static function create($id, $titel, $genre) {
-        if (!isset(self::$idMap["id"])) {
-            self::$idMap["id"] = new Boek($id, $titel, $genre);
+        if (!isset(self::$idMap[$id])) {
+            self::$idMap[$id] = new Boek($id, $titel, $genre);
         }
-        return self::$idMap["id"];
+        return self::$idMap[$id];
     }
 
     function getId() {
