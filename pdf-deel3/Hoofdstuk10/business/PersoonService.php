@@ -1,6 +1,6 @@
 <?php
 
-require_once '../data/PersoonDAO.php';
+require_once 'data/PersoonDAO.php';
 
 class PersoonService {
     

@@ -1,9 +1,9 @@
 <?php
 
-require_once ('./business/PersoonService.php');
+require_once ('business/PersoonService.php');
 
 $pService =  new PersoonService();
-$personen = new $pService->getPersonenOverzicht();
+$personen = $pService->getPersonenOverzicht();
 
 include ('./presentation/Personenlijst.php');
 
