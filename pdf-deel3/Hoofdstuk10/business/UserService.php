@@ -1,11 +1,11 @@
 <?php
-
+require_once 'data/UserDAO.php';
 class UserService {
 
-    public function controleerLogin($login, $password) {
-        if ($login == "admin" && $password = "geheim") {
-            return true;
-        }
+    public function controleerLogin($gebruikersnaam, $password) {
+      $userDAO = new UserDAO();
+      $correct = $userDAO->checkCreditials($gebruikersnaam, $password);        
+      return $correct;
     }
 
 }

@@ -28,7 +28,7 @@ class BoekDAO {
     public function getById($id) {
         $sql = "select mvc_boeken.id as boek_id, titel, genre_id, genrenaam from mvc_boeken, mvc_genres where genre_id= mvc_genres.id and mvc_boeken.id = :id";
 
-        $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_USERNAME);
+        $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':id' => $id));
         $rij = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -40,18 +40,33 @@ class BoekDAO {
 
     public function create($titel, $genreId) {
         $sql = "insert into mvc_boeken (titel, genre_id) values (:titel, :genreId)";
-    
+
         $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         $stmt = $dbh->prepare($sql);
-        $stmt->execute(array(':titel'=> $titel, ':genreId' => $genreId));
+        $stmt->execute(array(':titel' => $titel, ':genreId' => $genreId));
         $boekId = $dbh->lastInsertId();
-        $dbh=null;
-        
+        $dbh = null;
+
         $genreDAO = new GenreDAO();
         $genre = $genreDAO->getById($genreId);
         $boek = Boek::create($boekId, $titel, $genre);
         return $boek;
-               
+    }
+
+    public function delete($id) {
+        $sql = "delete from mvc_boeken where id = :id";
+        $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(array(':id' => $id));
+        $dbh = null;
+    }
+    
+    public function update($boek) {
+        $sql = "update mvc_boeken set titel = :titel, genre_id = :genreId where id = :id";
+       $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(array(':titel' => $boek->getTitel(), ':genreId' => $boek->getGenre()->getId(), ':id'=> $boek->getId()));
+        $dbh = null;
     }
 
 }

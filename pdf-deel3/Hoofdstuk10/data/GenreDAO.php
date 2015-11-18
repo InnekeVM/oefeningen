@@ -22,7 +22,7 @@ class GenreDAO {
     }
 
     public function getById($id) {
-        $sql = "select genrenaam from mvc_genres where id = :id";
+        $sql = "select genrenaam, wachtwoord from mvc_genres where id = :id";
         $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
 
         $stmt = $dbh->prepare($sql);
