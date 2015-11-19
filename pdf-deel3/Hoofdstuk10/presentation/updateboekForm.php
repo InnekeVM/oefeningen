@@ -6,6 +6,15 @@
     </head>
     <body>
         <h1>Boek bijwerken</h1>
+
+        <?php
+        if (isset($error) && $error == "titelbestaat") {
+            ?>
+            <p style="color: red">Titel bestaat al!</p>
+            <?php
+        }
+        ?>
+
         <form method="post" action="updateboek.php?action=process&id=<?php echo($boek->getId()); ?>">
             <table>
                 <tr>
@@ -26,9 +35,9 @@
                                 }
                                 ?>
                                 <option value="<?php echo ($genre->getId()); ?>"<?php echo($selWaarde); ?>><?php echo($genre->getGenreNaam()); ?></option>
-                                        <?php
-                                    }
-                                    ?>
+                                <?php
+                            }
+                            ?>
                         </select>
                     </td>
                 </tr>

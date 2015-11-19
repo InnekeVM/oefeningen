@@ -6,6 +6,14 @@
     </head>
     <body>
         <h1>Nieuw boek toevoegen</h1>
+        	<?php
+		if (isset($error) && $error == "titelbestaat") {
+			?>
+			<p style="color: red">Titel bestaat al!</p>
+			<?php
+		}
+		?>
+
         <form method="post" action="voegboektoe.php?action=process">
             <table>
                 <tr>
