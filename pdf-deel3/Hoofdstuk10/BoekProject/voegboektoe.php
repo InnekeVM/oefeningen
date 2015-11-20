@@ -1,14 +1,14 @@
 <?php
-namespace Hoofdstuk10\BoekProject\Presentation;
+namespace VDAB\BoekProject\Presentation;
 
-use Hoofdstuk10\BoekProject\Exceptions\TitelBestaatException;
-use Hoofdstuk10\BoekProject\Busines\GenreService;
-use Hoofdstuk10\BoekProject\Busines\BoekService;
+use VDAB\BoekProject\Exceptions\TitelBestaatException;
+use VDAB\BoekProject\Business\GenreService;
+use VDAB\BoekProject\Business\BoekService;
 use Doctrine\Common\ClassLoader;
 
 require_once 'Doctrine/Common/ClassLoader.php';
 
-$classLoader = new ClassLoader("Hoofdstuk10", "pdf-deel3");
+$classLoader = new ClassLoader("VDAB", "src");
 $classLoader->register();
 
 if(isset($_GET["action"]) && $_GET["action"] == "process"){
@@ -28,6 +28,6 @@ if(isset($_GET["action"]) && $_GET["action"] == "process"){
 		$error = $_GET["error"];
 	}
 
-    include 'presentation/nieuwboekForm.php';
+    include ("src/VDAB/BoekProject/Presentation/nieuwboekForm.php");
 }
 

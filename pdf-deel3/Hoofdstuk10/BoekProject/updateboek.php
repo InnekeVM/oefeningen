@@ -1,9 +1,15 @@
 <?php
-namespace Hoofdstuk10\BoekProject\Presentation;
+namespace VDAB\BoekProject\Presentation;
 
-use Hoofdstuk10\BoekProject\Busines\GenreService;
-use Hoofdstuk10\BoekProject\Busines\BoekService;
-use Hoofdstuk10\BoekProject\Exceptions\TitelBestaatException;
+use VDAB\BoekProject\Business\GenreService;
+use VDAB\BoekProject\Business\BoekService;
+use VDAB\BoekProject\Exceptions\TitelBestaatException;
+use Doctrine\Common\ClassLoader;
+
+require_once 'Doctrine/Common/ClassLoader.php';
+
+$classLoader = new ClassLoader("VDAB", "src");
+$classLoader->register();
 
 if (isset($_GET["action"]) && $_GET["action"] == "process") {
     try {
@@ -24,5 +30,5 @@ if (isset($_GET["action"]) && $_GET["action"] == "process") {
         $error = $_GET["error"];
     }
 
-    include("presentation/updateboekForm.php");
+    include("src/VDAB/BoekProject/Presentation/updateboekForm.php");
 }
