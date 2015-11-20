@@ -1,3 +1,6 @@
+<?php
+namespace Hoofdstuk10\BoekProject\Presentation;
+?>
 <!doctype HTML>
 <html>
     <head>

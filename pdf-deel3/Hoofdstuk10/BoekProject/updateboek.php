@@ -1,8 +1,9 @@
 <?php
+namespace Hoofdstuk10\BoekProject\Presentation;
 
-require_once 'business/GenreService.php';
-require_once 'business/BoekService.php';
-require_once 'Exceptions/TitelBestaatException.php';
+use Hoofdstuk10\BoekProject\Busines\GenreService;
+use Hoofdstuk10\BoekProject\Busines\BoekService;
+use Hoofdstuk10\BoekProject\Exceptions\TitelBestaatException;
 
 if (isset($_GET["action"]) && $_GET["action"] == "process") {
     try {

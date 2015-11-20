@@ -1,6 +1,8 @@
 <?php
+namespace Hoofdstuk10\BoekProject\Business;
 
-require_once 'data/GenreDAO.php';
+use Hoofdstuk10\BoekProject\Data\GenreDAO;
+
 
 class GenreService {
     

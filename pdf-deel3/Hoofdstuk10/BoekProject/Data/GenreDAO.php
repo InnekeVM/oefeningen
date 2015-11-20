@@ -1,9 +1,9 @@
 <?php
+namespace Hoofdstuk10\BoekProject\Data;
+use Hoofdstuk10\BoekProject\Data\DBConfig;
+use Hoofdstuk10\BoekProject\Entities\Genre;
+use PDO;
 
-use Genre;
-
-require_once 'DBConfig.php';
-require_once 'entities/Genre.php';
 
 class GenreDAO {
 

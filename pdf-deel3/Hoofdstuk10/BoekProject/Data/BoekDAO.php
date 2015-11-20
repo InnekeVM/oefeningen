@@ -1,8 +1,9 @@
 <?php
-
-require_once 'DBConfig.php';
-require_once 'entities/Boek.php';
-require_once 'entities/Genre.php';
+namespace Hoofdstuk10\BoekProject\Data;
+use Hoofdstuk10\BoekProject\Data\DBConfig;
+use Hoofdstuk10\BoekProject\Entities\Boek;
+use Hoofdstuk10\BoekProject\Entities\Genre;
+use PDO;
 
 class BoekDAO {
 

@@ -1,4 +1,5 @@
 <?php
+namespace Hoofdstuk10\BoekProject\Entities;
 
 class Boek {
 

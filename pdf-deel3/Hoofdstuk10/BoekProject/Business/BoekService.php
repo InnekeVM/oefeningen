@@ -1,6 +1,8 @@
 <?php
+namespace Hoofdstuk10\BoekProject\Business;
+use Hoofdstuk10\BoekProject\Data\BoekDAO;
+use Hoofdstuk10\BoekProject\Data\GenreDAO;
 
-require_once 'data/BoekDAO.php';
 
 class BoekService {
 
@@ -28,7 +30,7 @@ class BoekService {
     public function updateBoek($id, $titel, $genreId) {
         $genreDAO = new GenreDAO();
         $boekDAO = new BoekDAO();
-        $genre = $genreDAO->getById($id);
+        $genre = $genreDAO->getById($genreId);
         $boek = $boekDAO->getById($id);
         $boek->setTitel($titel);
         $boek->setGenre($genre);

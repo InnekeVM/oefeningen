@@ -1,7 +1,15 @@
 <?php
-require_once 'Exceptions/TitelBestaatException.php';
-require_once 'business/GenreService.php';
-require_once 'business/BoekService.php';
+namespace Hoofdstuk10\BoekProject\Presentation;
+
+use Hoofdstuk10\BoekProject\Exceptions\TitelBestaatException;
+use Hoofdstuk10\BoekProject\Busines\GenreService;
+use Hoofdstuk10\BoekProject\Busines\BoekService;
+use Doctrine\Common\ClassLoader;
+
+require_once 'Doctrine/Common/ClassLoader.php';
+
+$classLoader = new ClassLoader("Hoofdstuk10", "pdf-deel3");
+$classLoader->register();
 
 if(isset($_GET["action"]) && $_GET["action"] == "process"){
     try {
